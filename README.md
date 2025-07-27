@@ -136,10 +136,10 @@ export default function RootLayout() {
   return (
     <div>
       <header>
-        <h1>Minha Aplicação</h1>
+        <h1>Application</h1>
         <nav>
           <a href="/">Home</a>
-          <a href="/produtos">Produtos</a>
+          <a href="/products">Products</a>
         </nav>
       </header>
 
