@@ -76,15 +76,15 @@ createRoot(document.getElementById("root")!).render(
 src/pages/
 ├── layout.tsx              # Root layout
 ├── page.tsx                # Home page (/)
-├── produtos/
+├── products/
 │   ├── layout.tsx          # Products layout
-│   ├── page.tsx            # /produtos
-│   ├── novo/
-│   │   └── page.tsx        # /produtos/novo
+│   ├── page.tsx            # /products
+│   ├── new/
+│   │   └── page.tsx        # /products/new
 │   └── [id]/
-│       ├── page.tsx        # /produtos/123
-│       └── editar/
-│           └── page.tsx    # /produtos/123/editar
+│       ├── page.tsx        # /products/123
+│       └── edit/
+│           └── page.tsx    # /products/123/edit
 └── (admin)/                # Layout group
     ├── layout.tsx          # Admin layout
     └── dashboard/
@@ -100,8 +100,8 @@ src/pages/
 export default function ProductsPage() {
   return (
     <div>
-      <h1>Product list</h1>
-      <p>Esta é a página de produtos</p>
+      <h1>Products List</h1>
+      <p>This is the products page</p>
     </div>
   );
 }
@@ -118,8 +118,8 @@ export default function ProductPage() {
 
   return (
     <div>
-      <h1>Produto {id}</h1>
-      <p>Detalhes do produto {id}</p>
+      <h1>Product {id}</h1>
+      <p>Product details for {id}</p>
     </div>
   );
 }
@@ -130,13 +130,13 @@ export default function ProductPage() {
 ```tsx
 // src/pages/layout.tsx
 import { Outlet } from "react-router";
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 export default function RootLayout() {
   return (
     <div>
       <header>
-        <h1>Application</h1>
+        <h1>My Application</h1>
         <nav>
           <a href="/">Home</a>
           <a href="/products">Products</a>
@@ -144,13 +144,13 @@ export default function RootLayout() {
       </header>
 
       <main>
-        <Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <Outlet /> {/* Pages render here */}
-        <Suspense />
+        </Suspense>
       </main>
 
       <footer>
-        <p>&copy; 2024 My application</p>
+        <p>&copy; 2024 My Application</p>
       </footer>
     </div>
   );
@@ -179,7 +179,7 @@ import { router } from "react-pages-router-builder";
 
 | File          | Purpose        | Example         |
 | ------------- | -------------- | --------------- |
-| `page.tsx`    | Route page     | `/produtos`     |
+| `page.tsx`    | Route page     | `/products`     |
 | `layout.tsx`  | Shared layout  | Header/Footer   |
 | `loading.tsx` | Loading state  | Loading spinner |
 | `error.tsx`   | Error boundary | Error page      |
@@ -197,25 +197,25 @@ src/pages/
 │   ├── layout.tsx        # Admin layout
 │   ├── dashboard/
 │   │   └── page.tsx      # /dashboard (not /admin/dashboard)
-│   └── usuarios/
-│       └── page.tsx      # /usuarios (not /admin/usuarios)
+│   └── users/
+│       └── page.tsx      # /users (not /admin/users)
 └── (public)/             # Public group
     ├── layout.tsx        # Public layout
-    └── sobre/
-        └── page.tsx      # /sobre
+    └── about/
+        └── page.tsx      # /about
 ```
 
 ### Dynamic Routes
 
 ```
 src/pages/
-├── produtos/
+├── products/
 │   ├── [id]/
-│   │   ├── page.tsx      # /produtos/123
+│   │   ├── page.tsx      # /products/123
 │   │   └── [action]/
-│   │       └── page.tsx  # /produtos/123/editar
+│   │       └── page.tsx  # /products/123/edit
 │   └── [...slug]/
-│       └── page.tsx      # /produtos/a/b/c (catch-all)
+│       └── page.tsx      # /products/a/b/c (catch-all)
 ```
 
 ## 🤝 Contributing
@@ -237,4 +237,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by the React Pages Router community**
+**Made with ❤️ by the React Pages Router Builder community**
