@@ -1,6 +1,6 @@
 {
   "name": "react-pages-router-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "File-system based routing for React Router, inspired by Next.js App Router",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
