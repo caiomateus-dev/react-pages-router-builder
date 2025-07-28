@@ -20,23 +20,7 @@
 
 ## 🚀 Quick Start
 
-### Option 1: Initialize a new project
-
-```bash
-# npm
-npx react-pages-router-builder init
-
-# yarn
-yarn dlx react-pages-router-builder init
-
-# pnpm
-pnpm dlx react-pages-router-builder init
-
-# bun
-bunx react-pages-router-builder init
-```
-
-### Option 2: Install manually
+### Install the library
 
 ```bash
 # npm
@@ -161,6 +145,60 @@ export default function RootLayout() {
 
 - [User Guide](./docs/USER_GUIDE.md) - Complete usage guide
 - [Technical Documentation](./docs/TECHNICAL.md) - Deep technical details
+
+## 🛠️ CLI Commands
+
+### Initialize Router Configuration
+
+```bash
+npx react-pages-router-builder init
+```
+
+This command will:
+
+- Set up `src/pages/` with example files
+- Configure `src/main.tsx` to use the router
+- Install necessary dependencies
+
+> **Note:** This command should be run inside an existing React project (created with Vite, CRA, etc.)
+
+### Generate Routes
+
+```bash
+npx react-pages-router-builder route <path> [options]
+```
+
+**Examples:**
+
+```bash
+# Simple route
+npx react-pages-router-builder route /users
+
+# Route with dynamic parameter
+npx react-pages-router-builder route /users/[id]
+
+# Route with layout group
+npx react-pages-router-builder route /admin --group
+
+# Route with custom layout
+npx react-pages-router-builder route /dashboard --layout
+
+# Nested route
+npx react-pages-router-builder route /products/[id]/edit
+```
+
+**Options:**
+
+- `--group` - Create a route group (folder with parentheses)
+- `--layout` - Create a layout.tsx file for this route
+- `--help` - Show help message
+
+**Route Patterns:**
+
+- `/users` → `src/pages/users/page.tsx`
+- `/users/[id]` → `src/pages/users/[id]/page.tsx`
+- `/admin/users --group` → `src/pages/(admin)/users/page.tsx`
+- `/dashboard --layout` → `src/pages/dashboard/layout.tsx + page.tsx`
 
 ## 🛠️ API Reference
 

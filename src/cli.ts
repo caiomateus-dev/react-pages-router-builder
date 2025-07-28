@@ -74,7 +74,7 @@ export default defineConfig({
 }
 
 function createMainTsx() {
-      const content = `import { StrictMode } from 'react'
+  const content = `import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router'
 import { router } from 'react-pages-router-builder'
@@ -467,17 +467,17 @@ function generateRouteStructure(
 
 function showRouteHelp() {
   console.log(`
-RRGenius Route Generator
+React Pages Router Builder - Route Generator
 
 Usage:
-  npx rrgenius route <path> [options]
+  npx react-pages-router-builder route <path> [options]
 
 Examples:
-  npx rrgenius route /users                    # Simple route
-  npx rrgenius route /users/[id]               # Route with parameter
-  npx rrgenius route /admin --group            # Route with group
-  npx rrgenius route /dashboard --layout       # Route with layout
-  npx rrgenius route /products/[id]/edit       # Nested route
+  npx react-pages-router-builder route /users                    # Simple route
+  npx react-pages-router-builder route /users/[id]               # Route with parameter
+  npx react-pages-router-builder route /admin --group            # Route with group
+  npx react-pages-router-builder route /dashboard --layout       # Route with layout
+  npx react-pages-router-builder route /products/[id]/edit       # Nested route
 
 Options:
   --group    Create a route group (folder with parentheses)
@@ -503,9 +503,9 @@ function updatePackageJson() {
 
   const pkg = JSON.parse(readFile(pkgPath));
 
-  // Add rrgenius dependency
+  // Add react-pages-router-builder dependency
   pkg.dependencies = pkg.dependencies || {};
-  pkg.dependencies.rrgenius = "^1.0.0";
+  pkg.dependencies["react-pages-router-builder"] = "^1.0.0";
 
   // Add react-router if not present
   if (!pkg.dependencies["react-router"]) {
@@ -552,7 +552,7 @@ function main() {
 
     if (!routePath.startsWith("/")) {
       console.log("Error: Route path must start with /");
-      console.log("Example: npx rrgenius route /users");
+      console.log("Example: npx react-pages-router-builder route /users");
       return;
     }
 
@@ -565,7 +565,9 @@ function main() {
     generateRouteStructure(routePath, options);
     console.log("Route created successfully!");
   } else if (command === "init" || !command) {
-    console.log("RRGenius - File-system routing for React Router");
+    console.log(
+      "React Pages Router Builder - File-system routing for React Router"
+    );
     console.log("");
 
     const pkgManager = detectPackageManager();
@@ -594,13 +596,13 @@ function main() {
     createErrorPage();
 
     console.log("");
-    console.log("RRGenius setup complete!");
+    console.log("React Pages Router Builder setup complete!");
     console.log("");
     console.log("Installing dependencies...");
     installDependencies(pkgManager);
 
     console.log("");
-    console.log("Your RRGenius project is ready!");
+    console.log("Your React Pages Router Builder project is ready!");
     console.log("");
     console.log("Next steps:");
     console.log("   1. Start the dev server: npm run dev");
@@ -609,17 +611,21 @@ function main() {
     console.log("   4. Create new routes by adding page.tsx files");
     console.log("");
     console.log("Route Generator:");
-    console.log("   npx rrgenius route /users");
-    console.log("   npx rrgenius route /users/[id]");
-    console.log("   npx rrgenius route /admin --group");
+    console.log("   npx react-pages-router-builder route /users");
+    console.log("   npx react-pages-router-builder route /users/[id]");
+    console.log("   npx react-pages-router-builder route /admin --group");
     console.log("");
-    console.log("Documentation: https://github.com/caiomateus-dev/rrgenius");
+    console.log(
+      "Documentation: https://github.com/caiomateus-dev/react-pages-router-builder"
+    );
   } else {
     console.log("Unknown command: " + command);
     console.log("Available commands:");
-    console.log("  npx rrgenius init     - Initialize a new project");
-    console.log("  npx rrgenius route    - Generate routes");
-    console.log("  npx rrgenius --help   - Show help");
+    console.log(
+      "  npx react-pages-router-builder init     - Initialize router configuration"
+    );
+    console.log("  npx react-pages-router-builder route    - Generate routes");
+    console.log("  npx react-pages-router-builder --help   - Show help");
   }
 }
 

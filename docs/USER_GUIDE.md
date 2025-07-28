@@ -752,12 +752,66 @@ export default function ProtectedLayout() {
 
 ### Comandos CLI
 
-```bash
-# Inicializar novo projeto
-npx react-pages-router init
+#### Inicializar Configuração do Router
 
-# Ver ajuda
-npx react-pages-router --help
+```bash
+npx react-pages-router-builder init
+```
+
+Este comando irá:
+
+- Configurar `src/pages/` com arquivos de exemplo
+- Configurar `src/main.tsx` para usar o router
+- Instalar dependências necessárias
+
+> **Nota:** Este comando deve ser executado dentro de um projeto React já existente (criado com Vite, CRA, etc.)
+
+#### Gerar Rotas
+
+```bash
+npx react-pages-router-builder route <path> [options]
+```
+
+**Exemplos:**
+
+```bash
+# Rota simples
+npx react-pages-router-builder route /users
+
+# Rota com parâmetro dinâmico
+npx react-pages-router-builder route /users/[id]
+
+# Rota com grupo de layout
+npx react-pages-router-builder route /admin --group
+
+# Rota com layout customizado
+npx react-pages-router-builder route /dashboard --layout
+
+# Rota aninhada
+npx react-pages-router-builder route /products/[id]/edit
+```
+
+**Opções:**
+
+- `--group` - Criar um grupo de rota (pasta com parênteses)
+- `--layout` - Criar um arquivo layout.tsx para esta rota
+- `--help` - Mostrar mensagem de ajuda
+
+**Padrões de Rota:**
+
+- `/users` → `src/pages/users/page.tsx`
+- `/users/[id]` → `src/pages/users/[id]/page.tsx`
+- `/admin/users --group` → `src/pages/(admin)/users/page.tsx`
+- `/dashboard --layout` → `src/pages/dashboard/layout.tsx + page.tsx`
+
+### Ver Ajuda
+
+```bash
+# Ajuda geral
+npx react-pages-router-builder --help
+
+# Ajuda específica do comando route
+npx react-pages-router-builder route --help
 ```
 
 ### Integrando com TypeScript
